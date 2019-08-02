@@ -4,7 +4,8 @@
 
   <form class="search-form">
     <mat-form-field class="text-search">
-      <input matInput placeholder="Search" [formControl]="searchField" >
+      <!-- <input matInput placeholder="Search" [formControl]="searchField" #box (keyup.enter)="onEnter(box.value)"> -->
+      <input matInput placeholder="Search" #box (keyup.enter)="onEnter(box.value)">
     </mat-form-field>
   </form>
 

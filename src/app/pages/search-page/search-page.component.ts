@@ -20,10 +20,14 @@ export class SearchPageComponent implements OnInit {
 
   constructor(private fixturesService: FixturesService) { }
 
+  onEnter(value: string) {
+    this.searchResults$ = this.fixturesService.getFixtures(value);
+  }
+
   ngOnInit() {
-    this.searchResults$ = this.searchField.valueChanges.pipe(
-      switchMap(val => this.fixturesService.getFixtures(val))
-    );
+    // this.searchResults$ = this.searchField.valueChanges.pipe(
+    //   switchMap(val => this.fixturesService.getFixtures(val))
+    // );
 
   }
 
