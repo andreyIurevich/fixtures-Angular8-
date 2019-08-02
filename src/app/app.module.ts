@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { MaterialModule } from './modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],
