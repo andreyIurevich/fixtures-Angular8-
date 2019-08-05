@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Fixture } from 'src/app/models/fixture';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { FixturesService } from 'src/app/services/fixtures.service';
 import { FormControl } from '@angular/forms';
 import { switchMap } from 'rxjs/operators'
@@ -12,16 +12,27 @@ import { switchMap } from 'rxjs/operators'
 })
 export class SearchPageComponent implements OnInit {
 
-  searchResults$: Observable<Fixture[]>;
+  searchResults$: Fixture[];
 
   searchField = new FormControl();
 
   displayedColumns: string[] = ['fixtureName', 'kickoff', 'venue'];
 
+  isShowLoader: boolean = false;
+  isShowCleanMsg: boolean = false;
+
   constructor(private fixturesService: FixturesService) { }
 
   onEnter(value: string) {
-    this.searchResults$ = this.fixturesService.getFixtures(value);
+    this.isShowLoader = true;
+    this.fixturesService.getFixtures(value).subscribe((data: Fixture[]) => {
+      this.searchResults$ = data;
+      this.isShowLoader = false;
+      if (this.searchResults$.length === 0) {
+        this.isShowCleanMsg = true;
+      }
+    });
+
   }
 
   ngOnInit() {

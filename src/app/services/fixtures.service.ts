@@ -10,10 +10,6 @@ export class FixturesService {
 
   constructor(private http: HttpClient) { }
 
-  onEnter(value: string) { 
-    console.log(value); 
-  }
-
   getFixtures(searchTerm: string): Observable<Fixture[]> {
     return this.http.get<Fixture[]>(`https://prem-fixtures.azurewebsites.net/api/Fixtures?searchTerm=${searchTerm}&count=1000&skip=0`);
   }
