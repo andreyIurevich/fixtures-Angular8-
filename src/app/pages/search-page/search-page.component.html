@@ -1,23 +1,18 @@
 <div class="search-container">
 
-  <form class="search-form">
-    <mat-form-field class="text-search">
-      <!-- <input matInput placeholder="Search" [formControl]="searchField" #box (keyup.enter)="onEnter(box.value)"> -->
-      <input #box matInput placeholder="Search" (keyup.enter)="onEnter(box.value)">
-      <mat-hint>
-        Please type search phrase and press Enter
-      </mat-hint>
-    </mat-form-field>
-  </form>
+  <app-search-input 
+    (loaderVisible)="onChangeLoaderVisible($event)" 
+    (cleanMsgVisible)="onChangeCleanMsgVisible($event)"
+    (searchResults$)="getSearchData($event)"
+    >
+  </app-search-input>
 
-  <div class="loader-container">
-    <div *ngIf="!isShowCleanMsg && isShowLoader;">
-      <mat-spinner diameter="20"></mat-spinner>
-    </div>
-    <div *ngIf="isShowCleanMsg">
-        <p class="mat-typography">There are no search results. Please type again.</p> 
-    </div>
-  </div>
+  <app-loader-container
+    [isShowCleanMsg]="isShowCleanMsg"
+    [isShowLoader]="isShowLoader"
+  >
+  </app-loader-container>
 
   <app-search-result [searchResults]="searchResults$"></app-search-result>
+  
 </div>

@@ -1,0 +1,8 @@
+<div class="loader-container">
+    <div *ngIf="!isShowCleanMsg && isShowLoader">
+        <mat-spinner diameter="20"></mat-spinner>
+    </div>
+    <div *ngIf="isShowCleanMsg">
+        <p class="mat-typography">There are no search results. Please type again.</p>
+    </div>
+</div>

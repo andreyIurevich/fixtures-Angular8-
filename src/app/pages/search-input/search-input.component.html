@@ -1,0 +1,9 @@
+  <form class="search-form">
+    <mat-form-field class="text-search">
+      <!-- <input matInput placeholder="Search" [formControl]="searchField" #box (keyup.enter)="onEnter(box.value)"> -->
+      <input #box matInput placeholder="Search" (keyup.enter)="onEnter(box.value)">
+      <mat-hint>
+        Please type search phrase and press Enter
+      </mat-hint>
+    </mat-form-field>
+  </form>

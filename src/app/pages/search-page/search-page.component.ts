@@ -21,16 +21,16 @@ export class SearchPageComponent implements OnInit {
 
   constructor(private fixturesService: FixturesService) { }
 
-  onEnter(value: string) {
-    this.isShowLoader = true;
-    this.isShowCleanMsg = false;
-    this.fixturesService.getFixtures(value).subscribe((data: Fixture[]) => {
-      this.searchResults$ = data;
-      this.isShowLoader = false;
-      if (this.searchResults$.length === 0) {
-        this.isShowCleanMsg = true;
-      }
-    });
+  onChangeLoaderVisible($event: boolean) {
+    this.isShowLoader = $event;
+  }
+
+  onChangeCleanMsgVisible($event: boolean) {
+    this.isShowCleanMsg = $event;
+  }
+
+  getSearchData($event: Fixture[]) {
+    this.searchResults$ = $event;
   }
 
   ngOnInit() {
