@@ -16,8 +16,6 @@ export class SearchPageComponent implements OnInit {
 
   searchField = new FormControl();
 
-  displayedColumns: string[] = ['fixtureName', 'kickoff', 'venue'];
-
   isShowLoader: boolean = false;
   isShowCleanMsg: boolean = false;
 
@@ -25,6 +23,7 @@ export class SearchPageComponent implements OnInit {
 
   onEnter(value: string) {
     this.isShowLoader = true;
+    this.isShowCleanMsg = false;
     this.fixturesService.getFixtures(value).subscribe((data: Fixture[]) => {
       this.searchResults$ = data;
       this.isShowLoader = false;
@@ -32,13 +31,9 @@ export class SearchPageComponent implements OnInit {
         this.isShowCleanMsg = true;
       }
     });
-
   }
 
   ngOnInit() {
-    // this.searchResults$ = this.searchField.valueChanges.pipe(
-    //   switchMap(val => this.fixturesService.getFixtures(val))
-    // );
 
   }
 

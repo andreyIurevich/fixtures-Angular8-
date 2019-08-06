@@ -1,39 +1,23 @@
-
 <div class="search-container">
 
   <form class="search-form">
     <mat-form-field class="text-search">
       <!-- <input matInput placeholder="Search" [formControl]="searchField" #box (keyup.enter)="onEnter(box.value)"> -->
       <input #box matInput placeholder="Search" (keyup.enter)="onEnter(box.value)">
-      <mat-hint>Please type search phrase and press Enter</mat-hint>
+      <mat-hint>
+        Please type search phrase and press Enter
+      </mat-hint>
     </mat-form-field>
   </form>
 
   <div class="loader-container">
-    <div *ngIf="isShowLoader; else clearMsg">Loading ...</div>
-    <ng-template #clearMsg>Clear Msg</ng-template>
+    <div *ngIf="!isShowCleanMsg && isShowLoader;">
+      <mat-spinner diameter="20"></mat-spinner>
+    </div>
+    <div *ngIf="isShowCleanMsg">
+        <p class="mat-typography">There are no search results. Please type again.</p> 
+    </div>
   </div>
-  <table mat-table #resultsTable [dataSource]="searchResults$">
-    <ng-container matColumnDef="fixtureName">
-      <th mat-header-cell *matHeaderCellDef> Fixture </th>
-      <td mat-cell *matCellDef="let element"> 
-        <span [style.color]="element.homeTeam.colour">{{element.homeTeam.name}}</span>
-        vs 
-        <span [style.color]="element.awayTeam.colour">{{element.awayTeam.name}}</span> 
-      </td>
-    </ng-container>
 
-    <ng-container matColumnDef="kickoff">
-      <th mat-header-cell *matHeaderCellDef> Kick-off </th>
-      <td mat-cell *matCellDef="let element"> {{element.kickOff | date}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="venue">
-      <th mat-header-cell *matHeaderCellDef> Venue </th>
-      <td mat-cell *matCellDef="let element"> {{element.venue.name}}, {{element.venue.city}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  <app-search-result [searchResults]="searchResults$"></app-search-result>
 </div>

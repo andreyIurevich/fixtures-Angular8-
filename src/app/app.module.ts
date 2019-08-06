@@ -7,11 +7,13 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { MaterialModule } from './modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SearchResultComponent } from './pages/search-result/search-result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
