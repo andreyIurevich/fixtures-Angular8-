@@ -13,25 +13,25 @@ export class SearchInputComponent implements OnInit {
   @Output() cleanMsgVisible = new EventEmitter<boolean>();
   @Output() searchResults$ = new EventEmitter<Fixture[]>();
 
-  showLoader: boolean = true;
-  hideLoader: boolean = false;
+  show: boolean = true;
+  hide: boolean = false;
 
   constructor(private fixturesService: FixturesService) { }
 
   onShowLoader() {
-    this.loaderVisible.emit(this.showLoader);
+    this.loaderVisible.emit(this.show);
   }
 
   onHideLOader() {
-    this.loaderVisible.emit(this.hideLoader);
+    this.loaderVisible.emit(this.hide);
   }
 
   onShowCleanMsg() {
-    this.cleanMsgVisible.emit(true);
+    this.cleanMsgVisible.emit(this.show);
   }
 
   onHideCleanMsg() {
-    this.cleanMsgVisible.emit(false);
+    this.cleanMsgVisible.emit(this.hide);
   }
 
   onEnter(value: string) {
