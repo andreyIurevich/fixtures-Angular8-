@@ -1,9 +1,6 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Fixture } from 'src/app/models/fixture';
-import { Observable, pipe } from 'rxjs';
-import { FixturesService } from 'src/app/services/fixtures.service';
 import { FormControl } from '@angular/forms';
-import { switchMap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-search-page',
@@ -19,7 +16,7 @@ export class SearchPageComponent implements OnInit {
   isShowLoader: boolean = false;
   isShowCleanMsg: boolean = false;
 
-  constructor(private fixturesService: FixturesService) { }
+  constructor() { }
 
   onChangeLoaderVisible($event: boolean) {
     this.isShowLoader = $event;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FixturesService } from 'src/app/services/fixtures.service';
 import { Fixture } from 'src/app/models/fixture';
 

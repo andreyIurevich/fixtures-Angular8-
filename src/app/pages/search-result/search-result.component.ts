@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Fixture } from 'src/app/models/fixture';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-result',
